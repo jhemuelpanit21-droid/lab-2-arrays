@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Music Collection - Arrays Lab</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .section {
+            background: white;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #444;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .stats p {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        
+        #all-songs {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            min-height: 100px;
+        }
+        
+        #messages {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 4px;
+            min-height: 50px;
+        }
+        
+        .song-item {
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Music Collection</h1>
+    <p style="text-align: center; color: #666;">Learn JavaScript Arrays by Managing Your Favorite Songs!</p>
+    
+    <!-- Step 2: Display Selected Songs -->
+    <div class="section">
+        <h2>Selected Songs from My Collection</h2>
+        <div class="stats">
+            <p><strong>First Song:</strong> <span id="first-song">Not loaded yet</span></p>
+            <p><strong>Middle Song:</strong> <span id="middle-song">Not loaded yet</span></p>
+            <p><strong>Last Song:</strong> <span id="last-song">Not loaded yet</span></p>
+        </div>
+        <button onclick="displaySelectedSongs()">Show Selected Songs</button>
+    </div>
+    
+    <!-- Step 3: Array Properties -->
+    <div class="section">
+        <h2>Collection Statistics</h2>
+        <div class="stats">
+            <p><strong>Total Songs:</strong> <span id="song-count">0</span></p>
+            <p><strong>Total Artists:</strong> <span id="artist-count">0</span></p>
+            <p><strong>Total Genres:</strong> <span id="genre-count">0</span></p>
+            <p><strong>Favorite Songs:</strong> <span id="favorites-count">0</span></p>
+        </div>
+        <button onclick="showMusicStats()">Update Statistics</button>
+    </div>
+    
+    <!-- Step 4 & 5: Array Methods -->
+    <div class="section">
+        <h2>Modify Your Collection</h2>
+        <p>Use these buttons to practice array methods:</p>
+        
+        <div style="margin: 10px 0;">
+            <h3>Add Songs:</h3>
+            <button onclick="addSongToEnd()">Add Song to End (.push)</button>
+            <button onclick="addSongToBeginning()">Add Song to Beginning (.unshift)</button>
+        </div>
+        
+        <div style="margin: 10px 0;">
+            <h3>Remove Songs:</h3>
+            <button onclick="removeLastSong()">Remove Last Song (.pop)</button>
+            <button onclick="removeFirstSong()">Remove First Song (.shift)</button>
+        </div>
+        
+        <div style="margin: 10px 0;">
+            <h3>Favorites:</h3>
+            <button onclick="addRandomToFavorites()">Add Random Song to Favorites</button>
+        </div>
+    </div>
+    
+    <!-- Step 6: Array Iteration -->
+    <div class="section">
+        <h2>Array Iteration Methods</h2>
+        <button onclick="displayAllSongsForEach()">Show All Songs (.forEach)</button>
+        <button onclick="createFormattedSongList()">Create Formatted List (.map)</button>
+        <div id="all-songs">
+            Click a button above to display all your songs!
+        </div>
+    </div>
+    
+    <!-- Step 7: Array Searching -->
+    <div class="section">
+        <h2>Search Your Collection</h2>
+        <p>Enter a song title to search for:</p>
+        <input type="text" id="search-input" placeholder="Enter song title..." style="padding: 8px; width: 300px;">
+        <button onclick="searchForSong()">Find Song (.indexOf)</button>
+        <button onclick="checkIfSongExists()">Check if Exists (.includes)</button>
+    </div>
+    
+    <!-- Step 8: Array Destructuring -->
+    <div class="section">
+        <h2>Array Destructuring Practice</h2>
+        <button onclick="getTopThreeSongs()">Get Top 3 Songs</button>
+        <button onclick="separateFirstSong()">Separate First Song from Rest</button>
+    </div>
+    
+    <!-- Messages Area -->
+    <div class="section">
+        <h2>Activity Messages</h2>
+        <div id="messages">
+            Welcome! Complete the lab steps to see messages here.
+        </div>
+        <button onclick="clearMessages()">Clear Messages</button>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="script.js"></script>
+    
+    <!-- Auto-load data when page opens -->
+    <script>
+        window.onload = function() {
+            // Automatically show initial stats when page loads
+            if (typeof showMusicStats === 'function') {
+                showMusicStats();
+            }
+            if (typeof displaySelectedSongs === 'function') {
+                displaySelectedSongs();
+            }
+            showMessage("Welcome! Your music collection is ready. Complete the lab steps to practice arrays!");
+        }
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
